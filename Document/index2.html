@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Traffic Volume Estimation</title>
+  <style>
+      body {
+          background-image: url("https://tse3.mm.bing.net/th?id=OIP.3ZL07Co447CC43wN_Ja4FQHaE6&pid=Api&P=0&h=180");
+          background-size: cover;
+          background-repeat: no-repeat;
+          color: black;
+      }
+  </style>
+</head>
+
+<body>
+ <div class="login">
+    <center><h1>Traffic Volume Estimation</h1></center>
+
+    <form action="{{ url_for('predict') }}" method="post">
+        <h1>Please enter the following details</h1>
+
+        <label for="holiday">Holiday:</label>
+        <select id="holiday" name="holiday">
+            <option value="7">None</option>
+            <option value="1">Columbus Day</option>
+            <option value="18">Veterans Day</option>
+            <option value="9">Thanksgiving Day</option>
+            <option value="0">Christmas Day</option>
+            <option value="6">New Year's Day</option>
+            <option value="11">Washington's Birthday</option>
+            <option value="5">Memorial Day</option>
+            <option value="2">Independence Day</option>
+            <option value="8">State Fair</option>
+            <option value="3">Labor Day</option>
+            <option value="4">Martin Luther King Jr. Day</option>
+        </select> 
+        <br><br>
+
+        <label>Temperature:</label>
+        <input type="number" name="temp" placeholder="Temperature" required /><br><br>
+
+        <label>Rain:</label>
+        <input type="number" min="0" max="1" name="rain" placeholder="Rain (0 or 1)" required /><br><br>
+
+        <label>Snow:</label>
+        <input type="number" min="0" max="1" name="snow" placeholder="Snow (0 or 1)" required /><br><br>
+
+        <label for="weather">Weather:</label>
+        <select id="weather" name="weather">
+            <option value="1">Clouds</option>
+            <option value="0">Clear</option>
+            <option value="6">Rain</option>
+            <option value="2">Drizzle</option>
+            <option value="5">Mist</option>
+            <option value="4">Haze</option>
+            <option value="3">Fog</option>
+            <option value="10">Thunderstorm</option>
+            <option value="8">Snow</option>
+            <option value="9">Squall</option>
+            <option value="7">Smoke</option>
+        </select>
+        <br><br>
+
+        <label>Year:</label>
+        <input type="number" min="2012" max="2024" name="year" placeholder="Year" required /><br><br>
+
+        <label>Month:</label>
+        <input type="number" min="1" max="12" name="month" placeholder="Month" required /><br><br>
+
+        <label>Day:</label>
+        <input type="number" min="1" max="31" name="day" placeholder="Day" required /><br><br>
+
+        <label>Hours:</label>
+        <input type="number" min="0" max="23" name="hours" placeholder="Hours (0-23)" required /><br><br>
+
+        <label>Minutes:</label>
+        <input type="number" min="0" max="59" name="minutes" placeholder="Minutes (0-59)" required /><br><br>
+
+        <label>Seconds:</label>
+        <input type="number" min="0" max="59" name="seconds" placeholder="Seconds (0-59)" required /><br><br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-Large" style="height:30px;width:200px">Predict</button>
+    </form>
+
+    <br>     
+    {{ prediction_text }}
+    <br><br>
+
+
+  </div>
+</body>
+</html>
